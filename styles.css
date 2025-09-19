@@ -1,0 +1,1435 @@
+/* FILE: styles.clean.css
+   ==========================================================================
+   Proyecto: CrecER
+   Mantenimiento: 2025-09-13
+   Objetivo: Limpieza y organización sin afectar diseño/efectos/funcionalidad.
+   Estructura:
+     01) Base / Global
+     02) Header & Navegación
+     03) Hero
+     04) Features / Servicios (resumen)
+     05) Nosotros
+     06) Formación / Card destacada
+     07) Misión / Visión / Banner
+     08) Botones (btn, btn-mision, CTA)
+     09) Scroll to Top
+     10) Footer
+     11) Modales (general)
+     12) Formulario de Cotización
+     13) Modal de Privacidad (override)
+     14) Animaciones
+     15) Media queries (en orden por ancho)
+   ========================================================================== */
+
+/* 01) Base / Global ------------------------------------------------------- */
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 80px 0 0 0; /* Igual a la altura del header fijo */
+  background-color: #E1E5E1;
+}
+
+/* 02) Header & Navegación ------------------------------------------------- */
+header {
+  background-color: #E1E5E1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 30px;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 80px; /* header fijo */
+  z-index: 1000;
+  animation: slideDown 1s ease-in-out;
+}
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, #334F32 0%, #A57C52 50%, #334F32 100%);
+  background-size: 200% 100%;
+  border-radius: 2px;
+  animation: moveGradient 4s linear infinite;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #334F32;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding-left: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #334F32;
+  font-weight: bold;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+nav a:hover {
+  color: #1e7e34;
+  transform: scale(1.05);
+}
+
+/* CTA del menú (último <li>) — estilo de botón */
+nav ul li:last-child a {
+  background: linear-gradient(135deg, #334F32, #A57C52, #334F32);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: bold;
+  display: inline-block;
+  border: none;
+  outline: none;
+  transition: transform 0.3s ease;
+}
+nav ul li:last-child a:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Efecto degradado solo para enlaces normales del menú, excepto el último */
+nav ul li:not(:last-child) a:hover {
+  background: linear-gradient(135deg, #334F32, #A57C52, #334F32);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+/* Toggle del menú (usado por JS) */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #334F32;
+  cursor: pointer;
+  margin: 10px auto;
+}
+/* nav.active se muestra en móviles (se conserva: usado por JS) */
+
+/* 03) Hero ---------------------------------------------------------------- */
+.hero-full {
+  width: 100%;
+  height: 100vh;
+  background-image: url('img/sofa.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%; height: 100%;
+  display: flex; align-items: center;
+  padding-left: 60px;
+}
+.hero-text {
+  color: #fff;
+  max-width: 600px;
+  animation: fadeInUp 2s ease-in-out;
+}
+.hero-text h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.hero-text p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+/* 04) Features / Servicios (resumen) ------------------------------------- */
+/* 04) Features / Servicios (resumen) ------------------------------------- */
+/* ======================================================================
+   Base de contenedor y tarjetas (lo que se ve igual en PC)
+   Mantiene tu estética y animación de entrada.
+   ====================================================================== */
+.features-horizontal {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  background-color: #E1E5E1;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background-color: #fff;
+  padding: 10px;                 /* ← Padding base de la tarjeta */
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 210px;                  /* ← Ancho base de la tarjeta */
+  text-align: center;
+  cursor: pointer;
+  transition: opacity .8s ease, transform .8s ease, box-shadow .4s ease;
+  overflow: hidden;
+  opacity: 0;                    /* animación de aparición */
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.feature:nth-child(1) { animation-delay: .3s; }
+.feature:nth-child(2) { animation-delay: .6s; }
+.feature:nth-child(3) { animation-delay: .9s; }
+.feature:nth-child(4) { animation-delay: 1.2s; }
+.feature.visible { opacity: 1; transform: translateY(0); }
+
+.feature:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ======================================================================
+   Icon-box e icono (estados globales)
+   Nota: el hover verde global se sobreescribe en Servicios con selectores más específicos.
+   ====================================================================== */
+.icon-box {
+  background-color: #E1E5E1;
+  display: inline-block;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: background-color .4s ease, transform .25s ease;
+}
+
+.feature:hover .icon-box {        /* Hover global (verde) */
+  transform: scale(1.1);
+  background-color: #334F32;
+}
+
+.feature:hover .icon-box img,     /* Ícono blanco en hover global (Nosotros lo reutiliza) */
+.nosotros-features .icon-box img {
+  filter: brightness(0) invert(1);
+  transition: filter .25s ease;
+}
+
+/* Tamaño BASE del ícono (para páginas que no son Servicios) */
+.feature img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* ======================================================================
+   OVERRIDES SOLO para servicios.html
+   Requiere: <body class="page-servicios">
+   Aquí controlas el ALTO, ANCHO y PADDING de las tarjetas si lo deseas.
+   ====================================================================== */
+
+/* ► Palancas de ajuste (puedes cambiar estos valores y todo se actualiza) */
+.page-servicios {
+  --srv-card-width: 270px;   /* Ancho tarjeta (tu valor actual) */
+  --srv-card-padding: 15px;  /* Padding interno (bájalo si quieres menos alto: 8px/6px) */
+  --srv-card-min-h: 230px;    /* Altura mínima; pon 280px si quieres uniformar alto */
+  --srv-btn-space-top: 12px; /* Separación del botón respecto al texto si NO usas auto */
+}
+
+
+
+/* Estructura de tarjeta SOLO en Servicios (evita que el botón se “salga” al ancho de la página) */
+.page-servicios .features-horizontal .feature {
+  /* Control de ancho coherente */
+  width: var(--srv-card-width);
+  max-width: var(--srv-card-width);
+  flex: 0 0 var(--srv-card-width);
+
+  /* Control de altura/respiración */
+  padding: var(--srv-card-padding);
+  min-height: var(--srv-card-min-h);      /* p.ej., 280px para uniformar todas */
+
+  /* Para alinear elementos verticalmente y “pegar” el botón al fondo si quieres */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* 1) Ícono más grande SOLO en las 4 primeras tarjetas de Servicios */
+.page-servicios .features-horizontal .feature:nth-child(-n+4) img {
+  width: 92%;         /* ← Tu preferencia actual (ajusta 75–94% a gusto) */
+  height: auto;
+  max-height: 157px;  /* ← Tu preferencia actual (sube/baja 130–170px) */
+  object-fit: contain;
+  transition: filter .25s ease, transform .25s ease;
+}
+
+/* 2) Fondo degradado FIJO en la caja del ícono (solo esas 4) */
+.page-servicios .features-horizontal .feature:nth-child(-n+4) .icon-box {
+  background: linear-gradient(135deg, #334F32, #A57C52, #334F32);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+/* 3) Ícono BLANCO en reposo y color original al pasar el mouse */
+.page-servicios .features-horizontal .feature:nth-child(-n+4) .icon-box img {
+  filter: brightness(0) invert(1); /* blanco en reposo */
+}
+.page-servicios .features-horizontal .feature:nth-child(-n+4):hover .icon-box {
+  background: linear-gradient(135deg, #334F32, #A57C52, #334F32); /* mantiene degradado (no verde) */
+  transform: scale(1.06);
+}
+.page-servicios .features-horizontal .feature:nth-child(-n+4):hover .icon-box img {
+  filter: none; /* vuelve al color original del archivo */
+}
+
+/* 4) Botón “Ver detalle” en las tarjetas de Servicios */
+.page-servicios .features-horizontal .feature .btn-ver-detalle {
+  /* Si QUIERES el botón SIEMPRE al fondo de la tarjeta, usa margin-top: auto; */
+  /* margin-top: auto; padding-top: var(--srv-btn-space-top); */
+
+  /* Si prefieres que esté bajo el texto (como ahora), deja margen fijo: */
+  margin-top: auto;
+  padding-top:  var(--srv-btn-space-top); /* Mantiene tu separación */              /* ← Tu valor actual */
+  width: 100%;
+  min-height: 44px;                 /* accesible al tacto */
+  font-size: 14px;
+}
+.page-servicios .features-horizontal .feature .btn-ver-detalle:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* (Opcional) Listas con check dentro de la tarjeta */
+.page-servicios .feature ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  color: #334F32;
+  font-size: 14px;
+  text-align: left;
+}
+.page-servicios .feature ul li {
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 18px;
+}
+.page-servicios .feature ul li::before {
+  content: "✔";
+  color: #334F32;
+  font-size: 12px;
+  position: absolute;
+  left: 0; top: 0;
+}
+
+/* 5) Anular hover verde global SOLO para estas 4 tarjetas (gana en cascada) */
+.page-servicios .features-horizontal .feature:nth-child(-n+4):hover .icon-box {
+  background: linear-gradient(135deg, #334F32, #A57C52, #334F32);
+}
+
+/* ======================================================================
+   Responsive sutil (no cambia tu desktop)
+   ====================================================================== */
+@media (max-width: 480px) {
+  /* Limita el alto del ícono en móviles pequeños */
+  .page-servicios .features-horizontal .feature:nth-child(-n+4) img {
+    max-height: 230px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 05) Nosotros ------------------------------------------------------------ */
+.nosotros-section {
+  max-width: 1300px;
+  margin: 20 auto; /* valor original inválido; se conserva para no alterar layout */
+  padding: 4px;
+  background-color: #ffffff;
+  color: #334F32;
+}
+.nosotros-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.nosotros-container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.nosotros-text { flex: 1; min-width: 300px; }
+.nosotros-image { flex: 1; min-width: 300px; }
+.nosotros-image img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.nosotros-features {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.nosotros-features .feature {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  flex: 1; min-width: 250px;
+  text-align: center;
+}
+.nosotros-features h4 {
+  color: #334F32;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.nosotros-features h4:hover { color: #1e7e34; transform: scale(1.05); }
+
+/* 06) Formación / Card destacada ----------------------------------------- */
+.formacion-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 50px auto 190px auto;
+}
+.formacion-bg {
+  width: 100%; height: 350px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(105, 142, 88, 0.3);
+}
+.formacion-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.formacion-card {
+  position: relative;
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 90%;
+  width: 600px;
+  box-shadow: 0 10px 25px rgba(105, 142, 88, 0.3);
+  z-index: 2;
+  margin: -390px auto -150px auto;
+  transition: transform 0.3s ease;
+  color: #334F32;
+}
+.formacion-card:hover { transform: translateY(-10px); }
+
+.card-header {
+  display: flex; align-items: center;
+  gap: 12px; margin-bottom: 20px;
+}
+.card-header i { font-size: 1.8rem; color: #d4a017; }
+.card-header h2 {
+  font-size: 26px; margin: 0; color: #334F32; font-weight: bold;
+}
+.formacion-card p, .formacion-card strong { color: #334F32; }
+
+/* 07) Misión / Visión / Banner ------------------------------------------- */
+.mision-section { background: #ffffff; padding: 60px 20px; }
+.mision-container {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 40px;
+}
+.mision-image { flex: 1 1 45%; }
+.mision-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(51, 79, 50, 0.25);
+}
+.mision-text { flex: 1 1 45%; color: #334F32; }
+.mision-text h2 { font-size: 32px; color: #334F32; margin-bottom: 20px; }
+.mision-text p { font-size: 18px; line-height: 1.6; margin-bottom: 15px; }
+
+.mision-banner {
+  position: relative;
+  background: url("img/formacioncapacitacion.png") center/cover no-repeat;
+  height: 500px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; text-align: center;
+}
+.mision-overlay {
+  background: rgba(0, 0, 0, 0.55);
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 20px;
+}
+.mision-content { max-width: 800px; }
+.mision-content h2 { font-size: 36px; color: #f6fdf7; margin-bottom: 20px; }
+.mision-content p { font-size: 18px; line-height: 1.6; margin-bottom: 15px; }
+
+/* 08) Botones (btn, btn-mision, CTA) ------------------------------------- */
+.btn,
+.btn-mision,
+.modal-content .btn-cotizacion,
+nav ul li:last-child a {
+  background: linear-gradient(135deg, #334F32, #A57C52, #334F32);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 26px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: none;
+  position: relative;
+}
+.btn:hover,
+.btn-mision:hover,
+.modal-content .btn-cotizacion:hover,
+nav ul li:last-child a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+/* animación de aparición de CTA dentro del modal */
+.modal-show .btn-cotizacion { animation: bounceIn 0.6s ease; }
+
+/* 09) Scroll to Top ------------------------------------------------------- */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px; right: 20px;
+  background: linear-gradient(135deg, #334F32, #A57C52, #334F32);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 20px;
+  display: inline-block;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.scroll-to-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* 10) Footer -------------------------------------------------------------- */
+.site-footer {
+  background: linear-gradient(135deg, #334F32, #A57C52, #334F32);
+  color: #f6fdf7;
+  padding: 30px 20px;
+  font-size: 14px;
+  position: relative; z-index: 10;
+  text-align: center;
+}
+.site-footer a {
+  color: #f6fdf7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.site-footer a:hover { color: #1e7e34; }
+.footer-container {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.footer-social {
+  margin-top: 10px;
+  display: flex; justify-content: center; gap: 15px;
+}
+.footer-social a:hover { transform: scale(1.2); color: #1e7e34; }
+.footer-info p { margin: 5px 0; }
+
+/* 11) Modales (general) --------------------------------------------------- */
+.modal {
+  display: none;
+  position: fixed; left: 0; top: 0;
+  width: 100%; height: 100%;
+  z-index: 2000;
+  justify-content: center; align-items: center;
+  background-color: rgba(0,0,0,0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 10px;
+  overflow-y: auto;
+}
+.modal-show { opacity: 1; animation: fadeInScale 0.3s ease forwards; }
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.95); /* por defecto: claro con blur */
+  backdrop-filter: blur(6px);
+  padding: 25px 30px;
+  border-radius: 16px;
+  max-width: 700px; width: 100%;
+  color: #334F32;
+  position: relative;
+  box-sizing: border-box;
+  overflow-y: auto; max-height: 90vh;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  animation: slideIn 0.3s ease;
+}
+.modal-content img {
+  width: 100%; max-height: 300px;
+  object-fit: contain; border-radius: 12px; margin-bottom: 15px;
+  transform: scale(0.95); opacity: 0;
+  animation: imgZoomFade 0.4s forwards; animation-delay: 0.15s;
+}
+.modal-content h3 { margin-top: 0; font-size: 24px; }
+.modal-content p  { line-height: 1.6; margin-bottom: 15px; }
+
+.close {
+  position: absolute; top: 12px; right: 15px;
+  font-size: 24px; font-weight: bold;
+  cursor: pointer; color: #f6fdf7;
+  transition: color 0.3s ease;
+}
+.close:hover { color: #1e7e34; }
+
+/* 12) Formulario de Cotización ------------------------------------------- */
+#formCotizacion {
+  display: flex; flex-direction: column; gap: 20px;
+}
+.form-group { position: relative; }
+.form-group i {
+  position: absolute; left: 12px; top: 50%;
+  transform: translateY(-50%); color: #999;
+  pointer-events: none; transition: all 0.3s ease;
+}
+.form-group input:focus + label + i,
+.form-group input:not(:placeholder-shown) + label + i,
+.form-group textarea:focus + label + i,
+.form-group textarea:not(:placeholder-shown) + label + i {
+  color: #334F32; transform: translateY(-50%) scale(1.2);
+}
+
+#formCotizacion input,
+#formCotizacion textarea {
+  width: 100%;
+  padding: 16px 12px 16px 36px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+#formCotizacion input:focus,
+#formCotizacion textarea:focus {
+  border-color: #334F32;
+  box-shadow: 0 0 8px rgba(51,79,50,0.3);
+  outline: none; background-color: #fff;
+}
+#formCotizacion label {
+  position: absolute; left: 36px; top: 16px;
+  font-weight: 500; color: #999;
+  pointer-events: none; transition: all 0.3s ease;
+  background-color: #fff; padding: 0 4px;
+}
+#formCotizacion input:focus + label,
+#formCotizacion input:not(:placeholder-shown) + label,
+#formCotizacion textarea:focus + label,
+#formCotizacion textarea:not(:placeholder-shown) + label {
+  top: -8px; font-size: 12px; color: #334F32;
+}
+#formCotizacion textarea { resize: vertical; min-height: 90px; max-height: 200px; }
+
+/* Extras de “Servicios” */
+.services-title {
+  text-align: center; color: #334F32; font-size: 28px;
+  margin-top: 40px; margin-bottom: 0;
+}
+.feature ul { list-style: none; padding: 0; margin: 0; color: #334F32; font-size: 14px; text-align: left; }
+.feature ul li { margin-bottom: 6px; position: relative; padding-left: 18px; }
+.feature ul li::before {
+  content: "✔"; color: #334F32; font-size: 12px;
+  position: absolute; left: 0; top: 0;
+}
+
+/* 13) Modal de Privacidad (override específico) -------------------------- */
+#privacyModal .modal-content {
+  background: linear-gradient(145deg, #334F32, #A57C52);
+  border-radius: 25px;
+  max-width: 650px; width: 90%;
+  padding: 50px 35px;
+  color: #fffdf5;
+  text-align: left;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  animation: slideInModal 0.5s ease;
+  position: relative; overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+#privacyModal h3 {
+  font-size: 26px; margin-top: 0; margin-bottom: 20px; font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+#privacyModal p {
+  font-size: 16px; line-height: 1.6; margin-bottom: 15px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+#privacyModal .btn-accept {
+  display: inline-block; margin-top: 25px; padding: 14px 28px;
+  background: linear-gradient(135deg, #A57C52, #d4f7d4);
+  color: #334F32; font-weight: bold;
+  border-radius: 12px; text-decoration: none; text-align: center;
+  transition: all 0.3s ease; box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+#privacyModal .btn-accept:hover {
+  background: linear-gradient(135deg, #d4f7d4, #A57C52);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+}
+#privacyModal .close {
+  position: absolute; top: 15px; right: 20px;
+  font-size: 26px; font-weight: bold; color: #fffdf5;
+  cursor: pointer; transition: color 0.3s ease, transform 0.3s ease;
+}
+#privacyModal .close:hover { color: #d4f7d4; transform: scale(1.1); }
+#privacyModal .modal-image {
+  width: 80px; height: 80px; margin-bottom: 20px;
+  border-radius: 50%; overflow: hidden; display: block; margin-left: auto; margin-right: auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+#privacyModal .modal-content-inner { max-height: 70vh; overflow-y: auto; padding-right: 5px; }
+#privacyModal .modal-content-inner::-webkit-scrollbar { width: 6px; }
+#privacyModal .modal-content-inner::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
+#privacyModal .modal-content-inner::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+
+/* 14) Animaciones --------------------------------------------------------- */
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+@keyframes moveRightToLeft {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes moveGradient {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes fadeInScale {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes slideIn {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes imgZoomFade {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes bounceIn {
+  0%   { transform: translateY(-50px) scale(0.8); opacity: 0; }
+  60%  { transform: translateY(10px) scale(1.05); opacity: 1; }
+  80%  { transform: translateY(-5px) scale(0.98); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes slideInModal {
+  0% { transform: translateY(-30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* 15) Media queries ------------------------------------------------------- */
+/* Tablet / layout general */
+@media (max-width: 1024px) {
+  .feature { width: 45%; }
+}
+
+/* Móviles y tablet vertical (menú + secciones) */
+@media (max-width: 768px) {
+  /* Header / Navegación (estado mobile toggled por JS) */
+  header { flex-direction: column; align-items: center; }
+  nav { display: none; flex-direction: column; width: 100%; background-color: #E1E5E1; padding: 10px 0; }
+  nav.active { display: flex; } /* usado por JS */
+  nav ul { flex-direction: column; gap: 10px; align-items: center; }
+  .menu-toggle { display: block; }
+
+  /* Formación */
+  .formacion-card { width: 90%; margin: -50px auto 20px auto; padding: 25px; }
+  .formacion-bg { height: 250px; }
+  .card-header h2 { font-size: 22px; }
+
+  /* Misión */
+  .mision-container { flex-direction: column; text-align: center; }
+  .mision-text { order: 2; }
+  .mision-image { order: 1; }
+
+  /* Banner misión */
+  .mision-banner { height: auto; padding: 60px 20px; }
+  .mision-content h2 { font-size: 28px; }
+  .mision-content p  { font-size: 16px; }
+
+  /* Modales */
+  .modal-content { padding: 20px; }
+}
+
+/* Teléfonos pequeños */
+@media (max-width: 480px) {
+  .feature {
+    width: 45%;
+    max-width: 160px;
+    padding: 10px;
+    margin-bottom: 16px;
+  }
+  .feature h3 { font-size: 14px; }
+  .feature p  { font-size: 12px; }
+  .feature img { max-height: 80px; }
+
+  #formCotizacion input,
+  #formCotizacion textarea {
+    font-size: 13px; padding: 12px 10px 12px 32px;
+  }
+  .modal-content .btn-cotizacion {
+    padding: 12px 20px; font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+/* Animaciones para menú móvil */
+
+@keyframes slideDownMenu {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  nav.active {
+    animation: slideDownMenu 0.4s ease forwards;
+  }
+
+  nav ul li {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.4s ease forwards;
+    animation-delay: 0.2s;
+  }
+
+  nav ul li:nth-child(2) { animation-delay: 0.3s; }
+  nav ul li:nth-child(3) { animation-delay: 0.4s; }
+  nav ul li:nth-child(4) { animation-delay: 0.5s; }
+  nav ul li:nth-child(5) { animation-delay: 0.6s; }
+  nav ul li:nth-child(6) { animation-delay: 0.7s; }
+}
+
+
+/* Corrección para que el menú móvil ocupe todo el ancho */
+
+@media (max-width: 768px) {
+  nav.active {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    padding: 10px 0;
+    background-color: #E1E5E1;
+  }
+}
+
+
+/* Animación de cierre y fondo desenfocado para menú móvil */
+
+@keyframes fadeOutMenu {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-20px); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  nav.active {
+    backdrop-filter: blur(6px);
+    animation: slideDownMenu 0.4s ease forwards;
+  }
+
+  nav.inactive {
+    animation: fadeOutMenu 0.3s ease forwards;
+  }
+}
+
+
+
+
+
+.modal-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.modal-img {
+  flex: 1 1 40%;
+  max-width: 300px;
+}
+
+.modal-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.modal-text {
+  flex: 1 1 55%;
+  color: #334F32;
+}
+
+.modal-text h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #334F32;
+  margin-top: 0;
+}
+
+.modal-text ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.modal-text ul li {
+  margin-bottom: 8px;
+  list-style: disc;
+}
+
+
+
+/* Ajuste para alinear todo el contenido del modal a la izquierda */
+.modal-content {
+    text-align: left; /* Antes estaba en center */
+}
+
+/* Mantener el título centrado (opcional) */
+.modal-text h2 {
+    text-align: center;
+}
+
+
+
+
+/* Centrar solo el título del modal */
+.modal-content h2,
+.modal-content h3 {
+  text-align: center;
+}
+
+/* Centrar solo el botón de cotización */
+.modal-content .btn-cotizacion {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.modal-content .close {
+  position: relative;
+  display: block;
+  margin: 0 auto 10px auto;
+  font-size: 24px;
+  font-weight: bold;
+  color: #334F32;
+  cursor: pointer;
+}
+
+/* === [SERVICIOS] Centrar solo la "X" en modales de la página de Servicios === */
+/* Requiere: el <body> de servicios tenga class="page-servicios" */
+.page-servicios .modal:not(#privacyModal) .modal-content {
+  position: relative;        /* ancla para posicionar la X */
+  padding-top: 2.25rem;      /* evita que la X tape el título */
+}
+
+.page-servicios .modal:not(#privacyModal) .modal-content .close {
+  position: absolute;
+  top: .5rem;                /* ajusta si lo deseas */
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;               /* anula posicionamiento a la derecha */
+  margin: 0;                 /* anula centrado por flujo si existiera */
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== [CURSOS] ajustes específicos ===== */
+.visually-hidden { position:absolute !important; clip:rect(1px,1px,1px,1px); width:1px; height:1px; overflow:hidden; white-space:nowrap; }
+
+.page-cursos .chips {
+  display:flex; gap:10px; flex-wrap:wrap; margin:16px 0 10px;
+}
+.page-cursos .chip {
+  padding:6px 12px; border:2px solid #334F32; border-radius:16px;
+  background:#fff; color:#334F32; font-weight:600; font-size:13px;
+  cursor:pointer; transition:transform .2s ease, background-color .2s ease;
+}
+.page-cursos .chip:hover { transform: translateY(-1px) scale(1.02); }
+.page-cursos .chip.active {
+  background: linear-gradient(135deg,#334F32,#A57C52,#334F32);
+  color:#fff; border-color: transparent;
+}
+
+.page-cursos .filters {
+  display:flex; gap:10px; flex-wrap:wrap; margin:8px 0 20px;
+}
+.page-cursos .filters input[type="search"],
+.page-cursos .filters select {
+  padding:10px 12px; border:1px solid #ccc; border-radius:10px;
+  background:#fff; font:inherit; color:#334F32;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.page-cursos .filters input[type="search"]:focus,
+.page-cursos .filters select:focus {
+  outline:none; border-color:#334F32; box-shadow:0 0 8px rgba(51,79,50,.25);
+}
+
+/* X del modal centrada (opcional, como en servicios) */
+.page-cursos .modal .modal-content { position:relative; padding-top: 2.25rem; }
+.page-cursos .modal .modal-content .close {
+  position:absolute; top:.5rem; left:50%; transform:translateX(-50%);
+  right:auto; margin:0; z-index:2; color:#334F32;
+}
+
+
+/* ===== Ajustes de respiración para talleres/cursos ===== */
+body.page-talleres main,
+body.page-cursos main {
+  padding-top: 24px;      /* aire bajo el menú */
+  padding-bottom: 40px;   /* aire antes del footer */
+}
+
+body.page-talleres .cta-dudas,
+body.page-cursos .cta-dudas {
+  margin: 50px 0 80px;    /* separa el botón del footer */
+}
+
+/* Si quieres más espacio inicial en chips/filtros */
+body.page-talleres .chips,
+body.page-cursos .chips {
+  margin-top: 60px;
+}
+
+/* Ocultar tarjetas filtradas */
+.is-hidden { display: none !important; }
+
+
+/* =========================
+   [TALLERES] Alinear botones
+   ========================= */
+
+/* 1) El contenedor pasa a GRID (solo en talleres) */
+.page-talleres .features-horizontal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;                /* respeta tu separación */
+  align-items: stretch;     /* todas las cards se estiran igual en la fila */
+}
+
+/* 2) Cada tarjeta es una columna flexible: el botón baja al fondo */
+.page-talleres .features-horizontal .feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* si quieres el botón ancho total, usa 'stretch' */
+  box-sizing: border-box;
+  padding: 15px;            /* padding homogéneo; ajusta si prefieres */
+  min-height: 100%;         /* que use toda la altura que le da el grid */
+}
+
+/* Botón pegado al fondo y tamaño uniforme */
+.page-talleres .features-horizontal .feature .btn {
+  margin-top: auto;         /* clave para alinear en la parte baja */
+  width: 100%;
+  min-height: 44px;         /* accesible en tacto */
+}
+
+/* 3) (Opcional) Igualar alturas de título y resumen con 2 líneas máx. */
+.page-talleres .features-horizontal .feature h3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;    /* máx 2 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.25em * 2); /* reserva alto equivalente a 2 líneas */
+  text-align: center;
+}
+
+.page-talleres .features-horizontal .feature > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;    /* máx 2 líneas en el resumen */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.2em * 2);
+  text-align: center;
+}
+
+/* 4) (Opcional) Asegurar mismo tamaño para el ícono */
+.page-talleres .features-horizontal .feature .icon-box {
+  min-height: 96px;         /* asegura bloque visual consistente arriba */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.page-talleres .features-horizontal .feature .icon-box img {
+  width: 64px; height: 64px; object-fit: contain;
+}
+
+
+
+
+/* ===== Sticky footer base (aplica para todo el sitio) ===== */
+html, body {
+  height: 100%;
+}
+
+/* El body ya tiene padding-top y background en tu CSS.
+   Aquí solo activamos el contenedor flex vertical. */
+body {
+  min-height: 100vh;      /* ocupa al menos el alto de la ventana */
+  display: flex;          /* el body se comporta como columna */
+  flex-direction: column;
+}
+
+/* El contenido principal crece; el footer queda abajo */
+main {
+  flex: 1 0 auto;
+}
+
+/* El footer se “pega” al final cuando el contenido es corto */
+.site-footer {
+  margin-top: auto;
+}
+
+
+/* ===== Modal: soporte de video/iframe ===== */
+.modal-media video,
+.modal-media iframe {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  display: block;
+}
+
+/* Contenedor para iframes con relación 16:9 (responsive) */
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+.video-embed iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+
+
+
+/* ===== Hotfix Talleres (2025-09-18) ===== */
+
+/* 1) Evitar solapamiento con header fijo */
+body.page-talleres { padding-top: 96px; } /* antes 80px */
+@media (max-width: 768px) {
+  body.page-talleres { padding-top: 106px; } /* un poco más en mobile por la barra */
+}
+
+/* 2) Tarjetas: ancho/alto correcto dentro del grid */
+.page-talleres .features-horizontal { 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  align-items: stretch;
+  gap: 20px;
+}
+.page-talleres .features-horizontal .feature {
+  width: auto !important;        /* anula el 210px base */
+  max-width: none !important;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+/* 3) Mostrar todo el contenido (sin recortes a 2 líneas) */
+.page-talleres .features-horizontal .feature h3,
+.page-talleres .features-horizontal .feature > p {
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: visible;
+  min-height: auto;
+  text-align: center;
+}
+
+/* 4) Botones al fondo y táctiles */
+.page-talleres .features-horizontal .feature .btn {
+  margin-top: auto;
+  width: 100%;
+  min-height: 44px;
+}
+
+/* 5) Icono consistente arriba */
+.page-talleres .features-horizontal .feature .icon-box {
+  min-height: 96px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== [Talleres] Barra de búsqueda + chips ===== */
+.page-talleres .filters{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.page-talleres .search{ position:relative; }
+.page-talleres .search input[type="search"]{
+  min-width:260px;
+  padding:12px 42px 12px 14px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  background:#fff;
+  color:#334F32;
+  font:inherit;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.page-talleres .search input[type="search"]:focus{
+  outline:none;
+  border-color:#334F32;
+  box-shadow:0 0 8px rgba(51,79,50,.25);
+}
+.page-talleres .chips{ display:flex; gap:10px; flex-wrap:wrap; }
+.page-talleres .chip{
+  padding:6px 12px;
+  border:2px solid #334F32;
+  border-radius:16px;
+  background:#fff;
+  color:#334F32;
+  font-weight:600;
+  font-size:13px;
+  cursor:pointer;
+  transition:transform .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.page-talleres .chip:hover{ transform: translateY(-1px) scale(1.02); }
+.page-talleres .chip.active{
+  background: linear-gradient(135deg,#334F32,#A57C52,#334F32);
+  color:#fff;
+  border-color: transparent;
+}
+/* Que el grid gobierne el ancho y el botón quede al fondo */
+.page-talleres .features-horizontal{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap:20px; align-items:stretch;
+}
+.page-talleres .features-horizontal .feature{
+  width:auto !important; max-width:none !important;
+  min-height:100%;
+  display:flex; flex-direction:column; align-items:center;
+  padding:16px;
+}
+.page-talleres .features-horizontal .feature .btn{
+  margin-top:auto; width:100%; min-height:44px;
+}
+
+
+
+
+/* ==========================
+   Cursos y Talleres - Tarjetas
+========================== */
+.page-talleres .talleres-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-talleres .taller-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.page-talleres .taller-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.page-talleres .taller-img {
+  width: 320px;
+  height: 265px;
+  object-fit: cover;
+}
+
+.page-talleres .taller-info {
+  flex: 1;
+  padding: 20px;
+  color: #334F32;
+}
+
+.page-talleres .taller-info h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #334F32;
+}
+
+.page-talleres .taller-info p {
+  margin: 6px 0;
+  font-size: 14x;
+    text-align: left; /* esto alinea el texto a la izquierda */
+}
+
+.page-talleres .taller-info i {
+  color: #1e7e34;
+  margin-right: 8px;
+}
+
+.page-talleres .btn-group {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.page-talleres .btn-group .btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: #334F32;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.page-talleres .btn-group .btn:hover {
+  background-color: #1e7e34;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .page-talleres .taller-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .page-talleres .taller-img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .page-talleres .btn-group {
+    flex-direction: column;
+  }
+}
+
+
+
+
+
+
+/* ==========================
+   Modal de Programa (video + texto)
+========================== */
+.modal-media {
+  max-width: 700px;
+  width: 85%;
+  max-height: 100vh;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.modal-media h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #334F32;
+}
+
+.modal-media p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 0%; /* relación 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+.filters {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Opcional: centra verticalmente si hay altura definida */
+  text-align: center;
+}
+

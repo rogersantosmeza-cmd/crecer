@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CrecER - Iniciar sesión</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="page-servicios">
+    <style>
+    body {
+      margin: 0;
+      padding: 0;
+      padding-top: 80px; /* igual a la altura del header fijo */
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #E1E5E1;
+    }
+    .form-wrapper {
+        margin: 80px auto 100px auto; /* espacio arriba y abajo */
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 768px) {
+      .form-wrapper {
+        margin: 60px 20px;
+        padding: 15px;
+      }
+    }
+    @media (max-width: 480px) {
+      .form-wrapper {
+        margin: 40px 10px;
+        padding: 10px;
+      }
+    }
+  </style>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+     <a href="index.html"><img src="img/logo_crecer.png" alt="Logo CrecER" style="height:75px;"></a>
+    </div>
+
+    <nav>
+      
+    </nav>
+  </header>
+
+  <!-- Formulario de login -->
+  <div class="form-wrapper">
+    <h2 style="text-align:center; color:#334F32;">Iniciar sesión</h2>
+    <form id="formCotizacion">
+      <div class="form-group">
+        <input type="text" id="usuario" name="usuario" placeholder=" " required>
+        <label for="usuario">Usuario</label>
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" name="password" placeholder=" " required>
+        <label for="password">Contraseña</label>
+        <i class="fas fa-lock"></i>
+      </div>
+      <button type="submit" class="btn btn-cotizacion">Acceder</button>
+      <p style="text-align:center; margin-top:15px;">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>© 2025 <strong>CrecER</strong>. Todos los derechos reservados.</p>
+        <p><a href="#" id="openPrivacy">Política de privacidad</a></p>
+      </div>
+      <div class="footer-social">
+<a aria-label="WhatsApp" href="https://wa.me/qr/VC6JNP57PERRH1"><i class="fab fa-whatsapp"></i></a>
+<a aria-label="Facebook" href="https://web.facebook.com/people/Crecimiento-Emocional-y-Relacional/61576267550085/"><i class="fab fa-facebook-f"></i></a>
+<a aria-label="Instagram" href="https://www.instagram.com/crec_er_/"><i class="fab fa-instagram"></i></a>
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/crecimientoemocionalyrelacional/"><i class="fab fa-linkedin-in"></i></a>
+<a href="mailto:crecertransforma@gmail.com?subject=Consulta desde la web CrecER&body=Gracias%20por%20escribirnos.%20En%20Consultor%C3%ADa%20CrecER%3A%20Crecimiento%20Emocional%20y%20Relacional%20valoramos%20tu%20inter%C3%A9s.%0A%0ATe%20responderemos%20lo%20antes%20posible%3B%20normalmente%20en%20menos%20de%201%20hora%20durante%20la%20jornada%20laboral.%0A%0AMientras%20tanto%2C%20puedes%20conocer%20m%C3%A1s%20sobre%20nuestros%20programas%20y%20servicios%20aqu%C3%AD%3A%20https%3A//crecer.com.co %0A%0A%E2%9C%A8%20Equipo%20Consultor%C3%ADa%20CrecER.">
+  <i class="fas fa-envelope"></i> Escríbenos
+</a>
+<a aria-label="TikTok" href="https://www.tiktok.com/@crecer_2025"><i class="fab fa-tiktok"></i></a>
+<a aria-label="YouTube" href="http://www.youtube.com/@CrecER-2025"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Política -->
+  <div id="privacyModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Política de privacidad</h3>
+      <p>En <strong>CrecER</strong> protegemos tus datos personales bajo la Ley 1581 de 2012. La información que compartas será usada únicamente para fines de consultoría, formación y comunicación contigo.</p>
+      <p>Puedes ejercer tus derechos de actualización, rectificación o supresión escribiendo a 📧 crecertransforma@gmail.com.</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('nav').classList.toggle('active');
+    }
+    const modalPrivacy = document.getElementById("privacyModal");
+    const btnPrivacy = document.getElementById("openPrivacy");
+    const spanPrivacy = modalPrivacy.querySelector(".close");
+
+    btnPrivacy.onclick = () => {
+      modalPrivacy.style.display = "flex";
+      modalPrivacy.classList.add("modal-show");
+    };
+    spanPrivacy.onclick = () => {
+      modalPrivacy.classList.remove("modal-show");
+      setTimeout(()=>{ modalPrivacy.style.display="none"; },300);
+    };
+    window.addEventListener('click', (e) => {
+      if(e.target == modalPrivacy){
+        modalPrivacy.classList.remove("modal-show");
+        setTimeout(()=>{ modalPrivacy.style.display="none"; },300);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CrecER</title>
+<link href="styles.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="icon" type="image/png" href="img/logo_crecer.png">
+</head>
+<body>
+<button class="menu-toggle" onclick="toggleMenu()">☰</button><div id="top"></div>
+<header>
+<div class="logo">
+ <a href="index.html"><img alt="Logo CrecER" src="img/logo_crecer.png" style="height:75px;"/></a>
+</div>
+<nav>
+<ul>
+<li><a href="">                                                                                          </a></li> 
+<li><a href=index.html>Inicio</a></li>
+<li><a href=nosotros.html>¿Quiénes somos?</a></li>
+<li><a href=servicios.html>Servicios</a></li>
+<li><a href="talleres.html">cursos y talleres</a></li>
+<li><a href="#">contactanos</a></li>
+<li><a href="login.html">Agenda asesoria</a></li>
+</ul>
+</nav>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const features = document.querySelectorAll(".feature");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    features.forEach(feature => {
+      observer.observe(feature);
+    });
+  });
+</script>
+    <!-- QUEINES SOMOS -->
+
+<section class="mision-section">
+  <div class="mision-container">
+    <!-- Texto a la izquierda -->
+    <div class="mision-text">
+      <h2>¿Quiénes somos?</h2>
+      <p>
+        En <strong>CrecER</strong> te acompañamos a crecer de adentro hacia afuera: impulsamos el desarrollo personal y fortalecemos a los equipos de trabajo con programas que combinan psicología práctica, coaching y comunicación consciente. </p>
+        <p>
+        Somos una consultoría que cree en el poder de las personas para transformar su vida y su entorno. Nuestro propósito es brindarte herramientas para que descubras tu potencial, mejores tus relaciones y construyas espacios de trabajo más humanos, productivos y llenos de bienestar.
+      </p>
+    </div>
+
+    <!-- Imagen a la derecha -->
+    <div class="mision-image">
+      <img src="img/nosotros.jpeg" alt="Imagen NOSOTROS">
+    </div>
+  </div>
+</section>
+
+
+
+
+
+    <!-- MISION -->
+</section>
+<section class="mision-section">
+  <div class="mision-container">
+    <!-- Imagen lateral -->
+    <div class="mision-image">
+      <img src="img/formacioncapacitacion.png" alt="Nuestra misión">
+    </div>
+
+    <!-- Texto lateral -->
+    <div class="mision-text">
+      <h2>Nuestra Misión</h2>
+      <p>
+        En <strong>CrecER</strong> acompañamos a personas y organizaciones en el desarrollo de su potencial humano, fomentando habilidades emocionales, relacionales y de liderazgo. </p>
+      </p>
+      <p>
+        Nuestro propósito es generar espacios de aprendizaje transformador que fortalezcan
+        el bienestar personal y la efectividad en los equipos de trabajo.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+    <!-- VISION -->
+
+<section class="mision-section">
+  <div class="mision-container">
+    <!-- Texto a la izquierda -->
+    <div class="mision-text">
+      <h2>NuestraVisión</h2>
+      <p>
+        En <strong>CrecER</strong> Ser una consultoría reconocida en Colombia y Latinoamérica por impulsar procesos de crecimiento personal y organizacional con un enfoque humano, innovador y consciente, convirtiéndonos en un referente en el diseño de experiencias formativas que impactan vidas y culturas organizacionales. </p>
+    </div>
+
+    <!-- Imagen a la derecha -->
+    <div class="mision-image">
+      <img src="img/formacioncapacitacion.png" alt="Imagen misión">
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Enfoque diferenciador -->
+
+<section class="mision-banner">
+  <div class="mision-overlay">
+    <div class="mision-content">
+      <h2>Nuestro Enfoque Diferenciador</h2>
+      <p>
+        En <strong>CrecER</strong>  integramos la psicología práctica, el coaching y la comunicación consciente como pilares de nuestro trabajo. 
+      </p>
+      <p>
+        Este enfoque nos permite ofrecer procesos profundos pero aplicables, orientados a la acción y al logro de resultados reales.
+      </p>
+     
+    </div>
+  </div>
+</section>
+
+
+
+
+</body>
+
+
+
+
+
+<!-- Footer con enlace a Política de privacidad -->
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Información y política -->
+    <div class="footer-info">
+      <p>© 2025 <strong>CrecER</strong>. Todos los derechos reservados.</p>
+      <p><a href="#" id="openPrivacy">Política de privacidad y protección de datos</a></p>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="footer-social">
+<a aria-label="WhatsApp" href="https://wa.me/qr/VC6JNP57PERRH1"><i class="fab fa-whatsapp"></i></a>
+<a aria-label="Facebook" href="https://web.facebook.com/people/Crecimiento-Emocional-y-Relacional/61576267550085/"><i class="fab fa-facebook-f"></i></a>
+<a aria-label="Instagram" href="https://www.instagram.com/crec_er_/"><i class="fab fa-instagram"></i></a>
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/crecimientoemocionalyrelacional/"><i class="fab fa-linkedin-in"></i></a>
+<a href="mailto:crecertransforma@gmail.com?subject=Consulta desde la web CrecER&body=Gracias%20por%20escribirnos.%20En%20Consultor%C3%ADa%20CrecER%3A%20Crecimiento%20Emocional%20y%20Relacional%20valoramos%20tu%20inter%C3%A9s.%0A%0ATe%20responderemos%20lo%20antes%20posible%3B%20normalmente%20en%20menos%20de%201%20hora%20durante%20la%20jornada%20laboral.%0A%0AMientras%20tanto%2C%20puedes%20conocer%20m%C3%A1s%20sobre%20nuestros%20programas%20y%20servicios%20aqu%C3%AD%3A%20https%3A//crecer.com.co %0A%0A%E2%9C%A8%20Equipo%20Consultor%C3%ADa%20CrecER.">
+  <i class="fas fa-envelope"></i> Escríbenos
+</a>
+<a aria-label="TikTok" href="https://www.tiktok.com/@crecer_2025"><i class="fab fa-tiktok"></i></a>
+<a aria-label="YouTube" href="http://www.youtube.com/@CrecER-2025"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal de Política de Privacidad -->
+<div id="privacyModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Política de privacidad</h3>
+     <p>
+      En <strong>CrecER</strong> protegemos tus datos personales bajo la Ley 1581 de 2012.
+La información que compartas será usada únicamente para fines de consultoría, formación y comunicación contigo.
+
+    </p>
+    <p>
+      Puedes ejercer tus derechos de actualización, rectificación o supresión escribiendo a 📧 crecertransforma@gmail.com.
+    </p>
+  </div>
+</div>
+
+<!-- Script del modal -->
+<script>
+const modal = document.getElementById("privacyModal");
+const btn = document.getElementById("openPrivacy");
+const span = document.querySelector(".close");
+
+btn.onclick = function() {
+  modal.style.display = "flex";
+  modal.classList.add("modal-show");
+}
+
+span.onclick = function() {
+  modal.classList.remove("modal-show");
+  setTimeout(() => { modal.style.display = "none"; }, 300);
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.classList.remove("modal-show");
+    setTimeout(() => { modal.style.display = "none"; }, 300);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
+<script>
+function toggleMenu() {
+  var nav = document.querySelector('nav');
+  nav.classList.toggle('active');
+}
+
+// Hide menu when clicking a link
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('nav a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.querySelector('nav').classList.remove('active');
+    });
+  });
+});
+</script>

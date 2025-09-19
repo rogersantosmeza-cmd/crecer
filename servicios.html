@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CrecER - Servicios</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="img/logo_crecer.png">
+
+</head>
+<script src="servicios.enhance.js"></script>
+<body class="page-servicios"></body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+    <a href="index.html"><img alt="Logo CrecER" src="img/logo_crecer.png" style="height:75px;"/></a>
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav>
+      <ul>
+        <li><a href="">                                                                                          </a></li> 
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">¿Quiénes somos?</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="talleres.html">Cursos y Talleres</a></li>
+        <li><a href="#">Contáctanos</a></li>
+        <li><a href="login.html">Agenda Asesoría</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Título -->
+  <h2 class="services-title">¿Cómo te ayudamos a crecer?</h2>
+
+  <!--  Servicios resumen -->
+<section class="features-horizontal">
+  <div class="feature" onclick="openServiceModal('creacion')">
+    <div class="icon-box"><img src="img/psicologia.png" alt="Creación de contenido"></div>
+    <h3>Creación de contenido formativo</h3>
+    <ul>
+      <li>Diseño de cursos, talleres y programas de capacitación.</li>
+      <li>Redacción de guiones y materiales formativos.</li>
+      <li>Estructuración de contenido para plataformas digitales (LMS, intranet, etc.)</li>
+    </ul>
+  </div>
+
+  <div class="feature" onclick="openServiceModal('formacion')">
+    <div class="icon-box"><img src="img/liderazgo.png" alt="Formación y capacitación"></div>
+    <h3>Formación y Capacitación</h3>
+    <ul>
+      <li>Consultoría y formación personalizada</li>
+      <li>Talleres de desarrollo personal</li>
+      <li>Formación en habilidades blandas y comerciales</li>
+    </ul>
+  </div>
+
+  <div class="feature" onclick="openServiceModal('coaching')">
+    <div class="icon-box"><img src="img/recursos.png" alt="Coaching y acompañamiento"></div>
+    <h3>Coaching y Acompañamiento</h3>
+    <ul>
+      <li>Coaching personal</li>
+      <li>Coaching profesional</li>
+      <li>Sesiones de orientación emocional y relacional</li>
+    </ul>
+  </div>
+
+  <div class="feature" onclick="openServiceModal('consultoria')">
+    <div class="icon-box"><img src="img/educacion.png" alt="Consultoría organizacional"></div>
+    <h3>Consultoría Organizacional</h3>
+    <ul>
+      <li>Planes de mejora para:</li>
+      <li>Clima y Cultura</li>
+      <li>Desarrollo organizacional</li>
+    </ul>
+  </div>
+</section>
+
+  <!-- Modales de detalle de servicios -->
+  <div id="serviceModal" class="modal">
+    <div class="modal-content modal-animate">
+      <span class="close-modal" onclick="closeServiceModal()">&times;</span>
+      <div id="serviceDetail"></div>
+    </div>
+  </div>
+
+  <!-- Modal Cotización -->
+  <div id="cotizacionModal" class="modal">
+    <div class="modal-content modal-animate">
+      <span class="close-modal" id="closeCotizacion">&times;</span>
+      <h2>Solicitar Cotización</h2>
+    <form id="formCotizacion">
+  <div class="form-group">
+    <input type="text" id="nombre" name="nombre" placeholder=" " required>
+    <label for="nombre">Nombre</label>
+    <i class="fas fa-user"></i>
+  </div>
+  <div class="form-group">
+    <input type="email" id="correo" name="correo" placeholder=" " required>
+    <label for="correo">Correo electrónico</label>
+    <i class="fas fa-envelope"></i>
+  </div>
+  <div class="form-group">
+    <textarea id="mensaje" name="mensaje" rows="4" placeholder=" " required></textarea>
+    <label for="mensaje">Mensaje / Detalle del servicio</label>
+    <i class="fas fa-comment"></i>
+  </div>
+  <button type="submit" class="btn btn-cotizacion">Enviar</button>
+</form>
+
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <p>© 2025 <strong>CrecER</strong>. Todos los derechos reservados.</p>
+        <p><a href="#" id="openPrivacy">Política de privacidad</a></p>
+      </div>
+      <div class="footer-social">
+<a aria-label="WhatsApp" href="https://wa.me/qr/VC6JNP57PERRH1"><i class="fab fa-whatsapp"></i></a>
+<a aria-label="Facebook" href="https://web.facebook.com/people/Crecimiento-Emocional-y-Relacional/61576267550085/"><i class="fab fa-facebook-f"></i></a>
+<a aria-label="Instagram" href="https://www.instagram.com/crec_er_/"><i class="fab fa-instagram"></i></a>
+<a aria-label="LinkedIn" href="https://www.linkedin.com/company/crecimientoemocionalyrelacional/"><i class="fab fa-linkedin-in"></i></a>
+<a href="mailto:crecertransforma@gmail.com?subject=Consulta desde la web CrecER&body=Gracias%20por%20escribirnos.%20En%20Consultor%C3%ADa%20CrecER%3A%20Crecimiento%20Emocional%20y%20Relacional%20valoramos%20tu%20inter%C3%A9s.%0A%0ATe%20responderemos%20lo%20antes%20posible%3B%20normalmente%20en%20menos%20de%201%20hora%20durante%20la%20jornada%20laboral.%0A%0AMientras%20tanto%2C%20puedes%20conocer%20m%C3%A1s%20sobre%20nuestros%20programas%20y%20servicios%20aqu%C3%AD%3A%20https%3A//crecer.com.co %0A%0A%E2%9C%A8%20Equipo%20Consultor%C3%ADa%20CrecER.">
+  <i class="fas fa-envelope"></i> Escríbenos
+</a>
+<a aria-label="TikTok" href="https://www.tiktok.com/@crecer_2025"><i class="fab fa-tiktok"></i></a>
+<a aria-label="YouTube" href="http://www.youtube.com/@CrecER-2025"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Política -->
+  <div id="privacyModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Política de privacidad</h3>
+      <p>En <strong>CrecER</strong> protegemos tus datos personales...</p>
+    </div>
+  </div>
+
+<script>
+// Toggle menú
+function toggleMenu() {
+  document.querySelector('nav').classList.toggle('active');
+}
+
+// Modales de servicios
+const serviceModal = document.getElementById('serviceModal');
+const serviceDetail = document.getElementById('serviceDetail');
+
+const servicesContent = {
+  creacion: `
+
+
+    <h2>Creación de contenido formativo</h2>
+    <img src="img/formacioncapacitacion.png" alt="Coaching y Acompañamiento">Tipo:</strong> Servicio de consultoría y diseño instruccional.<br>
+    <strong>Duración:</strong> Flexible según el proyecto.<br>
+    <strong>Modalidad:</strong> Presencial y virtual.<br>
+    <strong>Incluye:</strong> Material de apoyo y entrega final de productos diseñados.</p>
+    <p><strong>Descripción:</strong> Servicio especializado en la creación de materiales de formación a la medida de cada organización. Diseñamos cursos, talleres, manuales, guiones para videos y recursos didácticos digitales o presenciales, con un enfoque práctico, moderno y alineado a las necesidades de la empresa.</p>
+    <ul>
+      <li>Diagnóstico de necesidades de formación.</li>
+      <li>Diseño de cursos, talleres y programas de capacitación.</li>
+      <li>Redacción de guiones y materiales formativos.</li>
+      <li>Estructuración de contenido para plataformas digitales (LMS, intranet, etc.).</li>
+    </ul>
+    <p><strong>Objetivos:</strong></p>
+    <ul>
+      <li>Fortalecer las capacidades internas de la empresa a través de formación a la medida.</li>
+      <li>Alinear los programas de formación con la estrategia y cultura organizacional.</li>
+      <li>Proveer materiales claros, profesionales y de impacto que potencien el aprendizaje.</li>
+    </ul>
+    <div class="modal-footer">
+  <button class="btn btn-cotizacion" onclick="openCotizacion()">Solicitar Cotización</button>
+</div>
+  `,
+  formacion: `
+    <h2>Formación y Capacitación</h2>
+    <img src="img/formacioncapacitacion.png" alt="Coaching y Acompañamiento">
+    <p><strong>Tipo:</strong> Consultoría y formación personalizada.<br>
+    <strong>Duración:</strong> Flexible según el proyecto.<br>
+    <strong>Modalidad:</strong> Presencial y virtual.<br>
+    <strong>Incluye:</strong> Material de apoyo y entrega final de todo lo trabajado.</p>
+    <p><strong>Enfoque:</strong> Espacio abierto para que organizaciones o personas puedan solicitar programas de formación en cualquier habilidad blanda o tema de desarrollo personal/organizacional que deseen fortalecer.</p>
+    <p><strong>Descripción:</strong> En CrecER diseñamos experiencias de aprendizaje totalmente personalizadas. Si tienes una necesidad específica en tu empresa o en tu desarrollo personal, nosotros escuchamos, analizamos y construimos el programa ideal para ti.</p>
+    <div class="modal-footer">
+  <button class="btn btn-cotizacion" onclick="openCotizacion()">Solicitar Cotización</button>
+</div>
+  `,
+  coaching: `
+ 
+    <h2>Coaching y Acompañamiento</h2>
+    <img src="img/formacioncapacitacion.png" alt="Coaching y Acompañamiento">
+    <p><strong>Tipo:</strong> Consultoría personalizada.<br>
+    <strong>Duración:</strong> Flexible según objetivos.<br>
+    <strong>Modalidad:</strong> Presencial y virtual.<br>
+    <strong>Incluye:</strong> Sesiones guiadas, material de apoyo y entrega final de lo trabajado.</p>
+    <p><strong>Enfoque:</strong></p>
+    <ul>
+      <li><strong>Coaching Personal:</strong> potenciar autoestima, autoconfianza y propósito.</li>
+      <li><strong>Coaching Profesional:</strong> impulsar competencias, liderazgo y desempeño.</li>
+      <li><strong>Orientación Emocional y Relacional:</strong> fortalecer relaciones, comunicación consciente y gestión de emociones.</li>
+    </ul>
+    <p><strong>Descripción:</strong> En CrecER diseñamos procesos de acompañamiento que transforman vidas y carreras. Ya sea que busques crecer como persona, avanzar profesionalmente o mejorar tus relaciones, te ofrecemos herramientas prácticas y un acompañamiento cercano que impulsa resultados reales y sostenibles.</p>
+    <div class="modal-footer">
+  <button class="btn btn-cotizacion" onclick="openCotizacion()">Solicitar Cotización</button>
+</div>
+
+  `,
+  consultoria: `
+
+    <h2>Consultoría Organizacional</h2>
+    <img src="img/formacioncapacitacion.png" alt="Coaching y Acompañamiento">
+    <p><strong>Tipo:</strong> Consultoría estratégica y acompañamiento especializado.<br>
+    <strong>Duración:</strong> Flexible según el alcance del proyecto.<br>
+    <strong>Modalidad:</strong> Presencial y virtual.<br>
+    <strong>Incluye:</strong> Diagnóstico inicial, planes de mejora, informes de avance y entrega final con recomendaciones.</p>
+    <p><strong>Enfoque:</strong></p>
+    <ul>
+      <li><strong>Clima laboral:</strong> medición y mejora del ambiente de trabajo.</li>
+      <li><strong>Cultura organizacional:</strong> alineación de valores, prácticas y liderazgo.</li>
+      <li><strong>Desarrollo organizacional:</strong> diseño de estrategias para el crecimiento sostenible y el alto desempeño.</li>
+    </ul>
+    <p><strong>Descripción:</strong> En CrecER acompañamos a las organizaciones en la creación de entornos saludables, colaborativos y productivos. A través de diagnósticos y planes de mejora personalizados, facilitamos procesos de transformación cultural que impactan directamente en la satisfacción de los equipos y en los resultados del negocio.</p>
+    <div class="modal-footer">
+  <button class="btn btn-cotizacion" onclick="openCotizacion()">Solicitar Cotización</button>
+</div>
+  `
+};
+
+function openServiceModal(service){
+  serviceDetail.innerHTML = servicesContent[service];
+
+  serviceModal.style.display = 'flex';
+  serviceModal.classList.add('modal-show');
+
+  // Scroll al inicio si el modal se abrió antes
+  serviceModal.scrollTop = 0;
+}
+
+function closeServiceModal(){
+  serviceModal.classList.remove('modal-show');
+  setTimeout(()=>{ serviceModal.style.display='none'; },300);
+}
+
+// Modal cotización
+const modalCot = document.getElementById("cotizacionModal");
+const closeCot = document.getElementById("closeCotizacion");
+
+function openCotizacion(){
+  modalCot.style.display = "flex";
+  modalCot.classList.add("modal-show");
+}
+
+closeCot.onclick = () => {
+  modalCot.classList.remove("modal-show");
+  setTimeout(() => { modalCot.style.display = "none"; }, 300);
+}
+
+window.onclick = function(event){
+  if(event.target == modalCot){
+    modalCot.classList.remove("modal-show");
+    setTimeout(()=>{modalCot.style.display="none";},300);
+  }
+}
+
+// Modal privacidad
+const modalPrivacy = document.getElementById("privacyModal");
+const btnPrivacy = document.getElementById("openPrivacy");
+const spanPrivacy = modalPrivacy.querySelector(".close");
+
+btnPrivacy.onclick = () => {
+  modalPrivacy.style.display = "flex";
+  modalPrivacy.classList.add("modal-show");
+};
+spanPrivacy.onclick = () => {
+  modalPrivacy.classList.remove("modal-show");
+  setTimeout(()=>{ modalPrivacy.style.display="none"; },300);
+};
+window.addEventListener('click', (e) => {
+  if(e.target == modalPrivacy){
+    modalPrivacy.classList.remove("modal-show");
+    setTimeout(()=>{ modalPrivacy.style.display="none"; },300);
+  }
+});
+
+// Animación de servicios
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".feature").forEach((feature, i)=>{
+    setTimeout(()=>{ feature.classList.add("visible"); }, i*200);
+  });
+});
+</script>
+
+
+</body>
+</html>

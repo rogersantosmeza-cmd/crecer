@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CrecER - Cursos y Talleres</title>
+  <link href="styles.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" type="image/png" href="img/logo_crecer.png">
+</head>
+<body class="page-talleres">
+
+  <!-- === Header === -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <header>
+    <div class="logo">
+      <img src="img/logo_crecer.png" alt="Logo CrecER" style="height:75px;"/>
+    </div>
+    <nav>
+      <ul>
+                <li><a href="">                                                                                          </a></li> 
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">¿Quiénes somos?</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="talleres.html">Cursos y Talleres</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+        <li><a href="login.html">Agenda asesoría</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- === Título === -->
+
+
+  <!-- === Filtros === -->
+   
+<div class="filters">
+
+
+
+    
+    <div class="search">
+      <h2 class="services-title">Cursos y Talleres</h2>  
+      <input type="search" id="searchInput" placeholder="🔎 Buscar curso o taller...">
+    </div>
+    <div class="chips">
+      <div class="chip active" data-filter="all">Todos</div>
+      <div class="chip" data-filter="taller">Talleres</div>
+      <div class="chip" data-filter="curso">Cursos</div>
+      <div class="chip" data-filter="virtual">Virtual</div>
+      <div class="chip" data-filter="presencial">Presencial</div>
+     
+    </div>
+     
+  </div>
+
+  <!-- === Contenido principal === -->
+  <main>
+    <section class="talleres-grid">
+
+      <!-- Taller -->
+      <div class="taller-card" data-type="taller presencial">
+        <img src="img/inteligencia_emocional.png" alt="Team Up: Inteligencia Emocional y Trabajo en Equipo" class="taller-img">
+        <div class="taller-info">
+          <h3>Inteligencia Emocional y Trabajo en Equipo</h3>
+          <p><i class="fas fa-clock"></i> <strong>Duración:</strong> 5 horas (1 sesión)</p>
+          <p><i class="fas fa-users"></i> <strong>Tipo:</strong> Taller experiencial y dinámico</p>
+          <p><i class="fas fa-chalkboard-teacher"></i> <strong>Modalidad:</strong> Presencial</p>
+          <p><i class="fas fa-book-open"></i> <strong>Incluye:</strong> Certificación, material de apoyo y entrega final</p>
+          <p><i class="fas fa-hand-holding-usd"></i> <strong>Precio:</strong> Según cotización</p>
+          <div class="btn-group">
+          <button class="btn" onclick="openPrograma(
+            'Team Up: Inteligencia Emocional y Trabajo en Equipo',
+            'Taller experiencial y dinámico',
+            'https://www.youtube.com/embed/VIDEO_ID'
+          )">Ver programa</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curso Liderazgo Integral -->
+      <div class="taller-card" data-type="curso presencial virtual">
+        <img src="img/Liderazgo integral.png" alt="Liderazgo Integral" class="taller-img">
+        <div class="taller-info">
+          <h3>Liderazgo Integral</h3>
+          <p><i class="fas fa-clock"></i> <strong>Duración:</strong> 24 horas (6 sesiones de 4h o 3 jornadas)</p>
+          <p><i class="fas fa-chalkboard-teacher"></i> <strong>Modalidad:</strong> Presencial y virtual</p>
+          <p><i class="fas fa-book-open"></i> <strong>Incluye:</strong> Certificación, material didáctico y entrega final</p>
+          <p><i class="fas fa-hand-holding-usd"></i> <strong>Precio:</strong> Según cotización</p>
+          <div class="btn-group">
+          <button class="btn" onclick="openPrograma(
+            'Curso Liderazgo Integral',
+            'Formación en liderazgo integral con sesiones presenciales y virtuales.',
+            'https://www.youtube.com/embed/VIDEO_ID'
+          )">Ver programa</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curso Comunicación y Colaboración Asertiva -->
+      <div class="taller-card" data-type="curso presencial virtual">
+        <img src="img/comunicacionasertiva.png" alt="Comunicación y Colaboración Asertiva" class="taller-img">
+        <div class="taller-info">
+          <h3>Comunicación y Colaboración Asertiva</h3>
+          <p><i class="fas fa-clock"></i> <strong>Duración:</strong> 12 horas</p>
+          <p><i class="fas fa-chalkboard-teacher"></i> <strong>Modalidad:</strong> Presencial y virtual</p>
+          <p><i class="fas fa-book-open"></i> <strong>Incluye:</strong> Certificación, material didáctico y entrega final</p>
+          <p><i class="fas fa-hand-holding-usd"></i> <strong>Precio:</strong> Según cotización</p>
+          <div class="btn-group">
+          <button class="btn" onclick="openPrograma(
+            'Curso Comunicación y Colaboración Asertiva',
+            'Curso práctico en habilidades de comunicación y trabajo en equipo.',
+            'https://www.youtube.com/embed/VIDEO_ID'
+          )">Ver programa</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curso Liderazgo Evolutivo -->
+      <div class="taller-card" data-type="curso presencial virtual">
+        <img src="img/Liderazgo evolutivo.png" alt="Liderazgo Evolutivo" class="taller-img">
+        <div class="taller-info">
+          <h3>Liderazgo Evolutivo</h3>
+          <p><i class="fas fa-clock"></i> <strong>Duración:</strong> 40 horas / 2 meses</p>
+          <p><i class="fas fa-chalkboard-teacher"></i> <strong>Modalidad:</strong> Presencial y virtual</p>
+          <p><i class="fas fa-book-open"></i> <strong>Incluye:</strong> Certificación, material didáctico y entrega final</p>
+          <p><i class="fas fa-hand-holding-usd"></i> <strong>Precio:</strong> Según cotización</p>
+          <div class="btn-group">
+          <button class="btn" onclick="openPrograma(
+            'Curso Liderazgo Evolutivo',
+            'Programa intensivo de liderazgo con enfoque evolutivo.',
+            'https://www.youtube.com/embed/VIDEO_ID'
+          )">Ver programa</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curso Coaching Transformacional -->
+      <div class="taller-card" data-type="curso virtual">
+        <img src="img/Coaching Transformacional.png" alt="Coaching Transformacional" class="taller-img">
+        <div class="taller-info">
+          <h3>Coaching Transformacional</h3>
+          <p><i class="fas fa-clock"></i> <strong>Duración:</strong> 3 meses (sesiones virtuales sábados AM)</p>
+          <p><i class="fas fa-chalkboard-teacher"></i> <strong>Modalidad:</strong> Virtual</p>
+          <p><i class="fas fa-book-open"></i> <strong>Incluye:</strong> Certificación, material didáctico y entrega final</p>
+          <p><i class="fas fa-hand-holding-usd"></i> <strong>Precio:</strong> Según cotización</p>
+           <div class="btn-group">
+          <button class="btn" onclick="openPrograma(
+  'Curso Coaching Transformacional',
+  'Entrenamiento intensivo en coaching con enfoque transformacional.',
+  'video/prueba.mp4'
+)">Ver programa</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    
+  </main>
+
+<div id="programaModal" class="modal">
+  <div class="modal-content modal-media">
+    <span class="close">&times;</span>
+    <div id="programaContent"></div>
+    <div class="btn-group">
+      <button class="btn btn-cotizacion" onclick="openCotizacion()">Solicitar Cotización</button>
+    </div>
+  </div>
+</div>
+
+ 
+
+  <!-- Modal Cotización -->
+<div id="cotizacionModal" class="modal">
+  <div class="modal-content modal-animate">
+    <span class="close-modal" id="closeCotizacion">&times;</span>
+    <h2>Solicitar Cotización</h2>
+    <form id="formCotizacion">
+      <div class="form-group">
+        <input type="text" id="nombre" name="nombre" placeholder=" " required>
+        <label for="nombre">Nombre</label>
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="form-group">
+        <input type="email" id="correo" name="correo" placeholder=" " required>
+        <label for="correo">Correo electrónico</label>
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div class="form-group">
+        <textarea id="mensaje" name="mensaje" rows="4" placeholder=" " required></textarea>
+        <label for="mensaje">Mensaje / Detalle del servicio</label>
+        <i class="fas fa-comment"></i>
+      </div>
+      <button type="submit" class="btn btn-cotizacion">Enviar</button>
+    </form>
+  </div>
+</div>
+
+
+
+  
+
+<!-- Footer con enlace a Política de privacidad -->
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Información y política -->
+    <div class="footer-info">
+      <p>© 2025 <strong>CrecER</strong>. Todos los derechos reservados.</p>
+      <p><a href="#" id="openPrivacy">Política de privacidad y protección de datos</a></p>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:tuemail@gmail.com" aria-label="Gmail"><i class="fas fa-envelope"></i></a>
+      <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal de Política de Privacidad -->
+<div id="privacyModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Política de privacidad</h3>
+    <p>
+      En <strong>CrecER</strong> protegemos tus datos personales bajo la Ley 1581 de 2012.
+La información que compartas será usada únicamente para fines de consultoría, formación y comunicación contigo.
+
+    </p>
+    <p>
+      Puedes ejercer tus derechos de actualización, rectificación o supresión escribiendo a 📧 crecertransforma@gmail.com.
+    </p>
+  </div>
+</div>
+
+<!-- Script del modal -->
+
+<script>
+const privacyModal = document.getElementById("privacyModal");
+const openPrivacyBtn = document.getElementById("openPrivacy");
+const closePrivacyBtn = privacyModal.querySelector(".close");
+
+openPrivacyBtn.onclick = function() {
+  privacyModal.style.display = "flex";
+  privacyModal.classList.add("modal-show");
+}
+
+closePrivacyBtn.onclick = function() {
+  privacyModal.classList.remove("modal-show");
+  setTimeout(() => { privacyModal.style.display = "none"; }, 300);
+}
+
+window.onclick = function(event) {
+  if (event.target == privacyModal) {
+    privacyModal.classList.remove("modal-show");
+    setTimeout(() => { privacyModal.style.display = "none"; }, 300);
+  }
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- === Scripts === -->
+  <script>
+    // Menú
+    function toggleMenu() {
+      document.querySelector('nav').classList.toggle('active');
+    }
+
+    // Modal programa
+ const programaModal = document.getElementById("programaModal");
+const programaContent = document.getElementById("programaContent");
+const closePrograma = programaModal.querySelector(".close");
+
+// Función para abrir el modal con video local
+function openPrograma(titulo, descripcion, videoPath) {
+  programaContent.innerHTML = `
+    <h2>${titulo}</h2>
+    <p>${descripcion}</p>
+    <div class="video-embed">
+      <video id="programaVideo" width="100%" controls>
+        <source src="${videoPath}" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+    </div>
+  `;
+
+  programaModal.style.display = "flex";
+  programaModal.classList.add("modal-show");
+
+  // Reproducir automáticamente
+  const video = document.getElementById("programaVideo");
+  video.play();
+}
+
+// Función para cerrar modal y detener el video
+function closeProgramaModal() {
+  programaModal.classList.remove("modal-show");
+  setTimeout(() => {
+    const video = document.getElementById("programaVideo");
+    if(video) video.pause(); // Pausa el video
+    if(video) video.currentTime = 0; // Reinicia al inicio
+    programaModal.style.display = "none";
+    programaContent.innerHTML = "";
+  }, 300);
+}
+
+// Eventos de cierre
+closePrograma.onclick = closeProgramaModal;
+window.onclick = (e) => {
+  if(e.target == programaModal) closeProgramaModal();
+};
+
+
+    // === Filtros ===
+    const searchInput = document.getElementById("searchInput");
+    const chips = document.querySelectorAll(".chip");
+    const cards = document.querySelectorAll(".taller-card");
+
+    let activeFilter = "all";
+
+    function applyFilters() {
+      const term = searchInput.value.toLowerCase();
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        const type = card.getAttribute("data-type");
+        const matchesSearch = text.includes(term);
+        const matchesFilter = activeFilter === "all" || type.includes(activeFilter);
+        card.style.display = matchesSearch && matchesFilter ? "flex" : "none";
+      });
+    }
+
+    searchInput.addEventListener("input", applyFilters);
+    chips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        chips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        activeFilter = chip.getAttribute("data-filter");
+        applyFilters();
+      });
+    });
+  </script>
+<script>
+// Modal Cotización
+const modalCot = document.getElementById("cotizacionModal");
+const closeCot = document.getElementById("closeCotizacion");
+
+function openCotizacion(){
+  modalCot.style.display = "flex";
+  modalCot.classList.add("modal-show");
+}
+
+closeCot.onclick = () => {
+  modalCot.classList.remove("modal-show");
+  setTimeout(() => { modalCot.style.display = "none"; }, 300);
+}
+
+window.onclick = function(event){
+  if(event.target == modalCot){
+    modalCot.classList.remove("modal-show");
+    setTimeout(()=>{modalCot.style.display="none";},300);
+  }
+}
+</script>
+
+</body>
+</html>
